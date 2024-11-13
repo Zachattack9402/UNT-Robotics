@@ -3,18 +3,26 @@
 // address we will assign if dual sensor is present
 #define LOX1_ADDRESS 0x30
 #define LOX2_ADDRESS 0x31
+#define LOX3_ADDRESS 0x32
+#define LOX4_ADDRESS 0x33
 
 // set the pins to shutdown
 #define SHT_LOX1 7
 #define SHT_LOX2 6
+#define SHT_LOX3 5
+#define SHT_LOX4 4
 
 // objects for the vl53l0x
 Adafruit_VL53L0X lox1 = Adafruit_VL53L0X();
 Adafruit_VL53L0X lox2 = Adafruit_VL53L0X();
+Adafruit_VL53L0X lox3 = Adafruit_VL53L0X();
+Adafruit_VL53L0X lox4 = Adafruit_VL53L0X();
 
 // this holds the measurement
 VL53L0X_RangingMeasurementData_t measure1;
 VL53L0X_RangingMeasurementData_t measure2;
+VL53L0X_RangingMeasurementData_t measure3;
+VL53L0X_RangingMeasurementData_t measure4;
 
 //Vision
 int corner = 1;
@@ -42,15 +50,21 @@ void setID() {
   // all reset
   digitalWrite(SHT_LOX1, LOW);    
   digitalWrite(SHT_LOX2, LOW);
+  digitalWrite(SHT_LOX3, LOW);    
+  digitalWrite(SHT_LOX4, LOW);
   delay(10);
   // all unreset
   digitalWrite(SHT_LOX1, HIGH);
   digitalWrite(SHT_LOX2, HIGH);
+  digitalWrite(SHT_LOX3, HIGH);
+  digitalWrite(SHT_LOX4, HIGH);
   delay(10);
 
   // activating LOX1 and resetting LOX2
   digitalWrite(SHT_LOX1, HIGH);
   digitalWrite(SHT_LOX2, LOW);
+  digitalWrite(SHT_LOX3, LOW);
+  digitalWrite(SHT_LOX4, LOW);
 
   // initing LOX1
   if(!lox1.begin(LOX1_ADDRESS)) {
@@ -69,6 +83,9 @@ void setID() {
     while(1);
   }
 }
+
+//activating LOX3
+if(!)
 
 
 
